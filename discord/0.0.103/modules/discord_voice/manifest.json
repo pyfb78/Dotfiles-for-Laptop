@@ -1,0 +1,9 @@
+{
+  "files": [
+    "discord_voice.node",
+    "libopenh264.so.8",
+    "package.json",
+    "index.js",
+    "manifest.json"
+  ]
+}

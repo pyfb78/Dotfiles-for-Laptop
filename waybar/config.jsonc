@@ -1,0 +1,200 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 40,
+  "spacing": 2,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+	  "bluetooth",
+	"custom/battery",
+    "custom/processor",
+    "custom/amd",
+    // "memory",
+    "pulseaudio",
+    // "clock",
+    "clock#simpleclock",
+    "custom/notification",
+"network",
+    "custom/power"
+    //"tray"
+  ],
+// "network": {
+//     "interface": "wlan0",
+//     "format": "{ifname}",
+//     "format-wifi": "{essid} ({signalStrength}%) ",
+//     "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+//     "format-disconnected": "", //An empty format will hide the module.
+//     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+//     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+//     "tooltip-format-ethernet": "{ifname} ",
+//     "tooltip-format-disconnected": "Disconnected",
+//     "max-length": 50
+// },
+"bluetooth": {
+	"format": " {status}",
+	"format-connected": " {device_alias}",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	"on-click": "blueman-manager"
+},
+"network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "",
+    "format-ethernet": "󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    // "max-length": 50,
+    "on-click": "nmtui",
+},
+// "network": {
+//     "interface": "wlan0",
+//     "format": "{ifname}",
+//     "format-wifi": "{essid} ({signalStrength}%) ",
+//     "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+//     "format-disconnected": "", //An empty format will hide the module.
+//     "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+//     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+//     "tooltip-format-ethernet": "{ifname} ",
+//     "tooltip-format-disconnected": "Disconnected",
+//     "max-length": 50
+// },
+"custom/amd": {
+	  "exec": "/home/bruce/.config/waybar/amd.sh",
+	  "interval": 1,
+	  "tooltip":true,
+  "return-type": "json"
+    },
+
+  "battery": {
+        "format": "{icon} <span font_size='x-small' rise='5000' foreground='#AAAAAA'>{capacity:3}%</span>",
+        "format-charging": "{icon} <span font_size='x-small' rise='5000' foreground='#49FF37'>{capacity:3}%</span>",
+        "format-critical": "{icon} <span font_size='x-small' rise='5000' foreground='#FF3434'>{capacity:3}%</span>",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 25
+    },
+  "custom/battery": {
+	  "exec": "/home/bruce/.config/waybar/battery.sh",
+	  "interval": 2,
+	  "tooltip":true,
+  "return-type": "json"
+    },
+    "custom/spotify": {
+    "format": "  {}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor",
+  },
+  "mpris": {
+    "player": "spotify",
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": {
+      "paused": "",
+    },
+    "player-icons": {
+      "default": "",
+    },
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 40
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10,
+  },
+"clock#simpleclock": {
+  "tooltip": false,
+  "format": " {:%I:%M %p}"
+},
+// "clock#simpleclock": {
+//     "format": " {:%I:%M %p}",
+//     "tooltip-format": "{tz_list}",
+//     "timezones": [
+//         "America/New_York",
+//         "Etc/UTC",
+//         "America/Montevideo",
+//         "America/Los_Angeles",
+//         "Asia/Tokyo"
+//     ]
+// },
+  "clock": {
+    "format": " {:L%a %d %b}",
+    "calendar": {
+      "format": {
+        "days": "<span weight='normal'>{}</span>",
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+      },
+      "mode": "month",
+      "mode-mon-col": 1,
+      "on-scroll": 1,
+    },
+    "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>",
+  },
+  "custom/processor": {
+	  "exec": "/home/bruce/.config/waybar/processor.sh",
+	  "interval": 1,
+	  "tooltip":true,
+  "return-type": "json"
+    },
+  "memory": {
+    "format": " {used:0.1f}Gi",
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/sep": {
+    "format": "|",
+    "tooltip": false,
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻",
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟",
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false,
+  },
+}
