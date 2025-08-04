@@ -280,3 +280,10 @@ Render pre processor: 0
 [2025-08-03 22:20:12.427] [37003] (region_latency_tester.cpp:288): Average RTT for region atlanta is 28
 [2025-08-03 22:20:12.427] [37003] (region_latency_tester.cpp:288): Average RTT for region us-south is 49.75
 [2025-08-03 22:28:54.938] [29541] (instrumented_task.cpp:52): polling 28 metrics
+[2025-08-03 22:41:57.074] [29348] JS console: [GatewaySocket] [WS CLOSED] (true, 4003, Not authenticated.) retrying in 2.43 seconds.
+[2025-08-03 22:41:59.507] [29348] JS console: [GatewaySocket] [CONNECT] wss://gateway-us-east1-d.discord.gg, encoding: etf, version: 9, compression: zstd-stream
+[2025-08-03 22:41:59.727] [29348] JS console: [GatewaySocket] [CONNECTED] wss://gateway-us-east1-d.discord.gg/?encoding=etf&v=9&compress=zstd-stream in 220 ms
+[2025-08-03 22:41:59.728] [29348] JS console: [GatewaySocket] [RESUME] resuming session 2ca8755a1d2abe60e7f3406ec36e19ed, seq: 328
+[2025-08-03 22:41:59.757] [29348] JS console: [GatewaySocket] [INVALID_SESSION]
+[2025-08-03 22:41:59.801] [29348] JS console: [GatewaySocket] [WS CLOSED] because of authentication failure, marking as closed.
+[2025-08-03 22:41:59.802] [29348] JS console: [GatewaySocket] [RESET] (true, 4004, Authentication failed.)
